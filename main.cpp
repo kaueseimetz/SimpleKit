@@ -1,6 +1,7 @@
 #include <iostream>
 #include <infoware/system.hpp>
 #include <infoware/cpu.hpp>
+#include <cstdlib>
 
 using std::cout;
 using std::endl;
@@ -12,24 +13,34 @@ int Menu_Interface();
 int SystemInfo_Interface();
 string strip(string& input);
 string addSpace(string& inputText, int maxSpace);
+void clearScreen();
 
 int main(){
-
+    Menu_Interface();
     return 0;
 }
 
 int Menu_Interface(){
-    cout << "+=========================================================+" << endl;
-    cout << "|                        SimpleKit                        |" << endl;
-    cout << "+=========================================================+" << endl;
-    cout << "|   1. Get System Info                                    |" << endl;
-    cout << "|   2. Get Memory Status                                  |" << endl;
-    cout << "|   3. Get Network Status                                 |" << endl;
-    cout << "|   4. Get Current Timestamp                              |" << endl;
-    cout << "|   0. Exit App                                           |" << endl;
-    cout << "+=========================================================+" << endl;
+    clearScreen();
+
+    cout << "███████╗██╗███╗   ███╗██████╗ ██╗     ███████╗    ██╗  ██╗██╗████████╗" << endl;
+    cout << "██╔════╝██║████╗ ████║██╔══██╗██║     ██╔════╝    ██║ ██╔╝██║╚══██╔══╝" << endl;
+    cout << "███████╗██║██╔████╔██║██████╔╝██║     █████╗      █████╔╝ ██║   ██║   " << endl;
+    cout << "╚════██║██║██║╚██╔╝██║██╔═══╝ ██║     ██╔══╝      ██╔═██╗ ██║   ██║   " << endl;
+    cout << "███████║██║██║ ╚═╝ ██║██║     ███████╗███████╗    ██║  ██╗██║   ██║   " << endl;
+    cout << "╚══════╝╚═╝╚═╝     ╚═╝╚═╝     ╚══════╝╚══════╝    ╚═╝  ╚═╝╚═╝   ╚═╝   " << endl;
+    cout << endl << endl;
+    cout << "     +=========================================================+      " << endl;
+    cout << "     |                          MENU                           |      " << endl;
+    cout << "     +=========================================================+      " << endl;
+    cout << "     |   1. Get System Info                                    |      " << endl;
+    cout << "     |   2. Get Memory Status                                  |      " << endl;
+    cout << "     |   3. Get Network Status                                 |      " << endl;
+    cout << "     |   4. Get Current Timestamp                              |      " << endl;
+    cout << "     |   0. Exit App                                           |      " << endl;
+    cout << "     +=========================================================+      " << endl;
     cout << "\n";
-    cout << "What you gonna do? >" << endl;
+    cout << "What you gonna do? \n>";
     string response;
     std::cin >> response;
 
@@ -84,4 +95,11 @@ string addSpace(string& inputText, int maxSpace){
     int space2Fill = maxSpace - inputText.length();
     if (space2Fill > 0) { return string(space2Fill, ' '); }
     return "";
+}
+void clearScreen(){
+    #if defined(_WIN32) || defined(WIN32)
+        system("cls");
+    #else
+        system("clear");
+    #endif
 }
