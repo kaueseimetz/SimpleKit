@@ -29,16 +29,22 @@ int Menu_Interface(){
     cout << "╚════██║██║██║╚██╔╝██║██╔═══╝ ██║     ██╔══╝      ██╔═██╗ ██║   ██║   " << endl;
     cout << "███████║██║██║ ╚═╝ ██║██║     ███████╗███████╗    ██║  ██╗██║   ██║   " << endl;
     cout << "╚══════╝╚═╝╚═╝     ╚═╝╚═╝     ╚══════╝╚══════╝    ╚═╝  ╚═╝╚═╝   ╚═╝   " << endl;
+    
     cout << endl << endl;
-    cout << "     +=========================================================+      " << endl;
-    cout << "     |                          MENU                           |      " << endl;
-    cout << "     +=========================================================+      " << endl;
-    cout << "     |   1. Get System Info                                    |      " << endl;
-    cout << "     |   2. Get Memory Status                                  |      " << endl;
-    cout << "     |   3. Get Network Status                                 |      " << endl;
-    cout << "     |   4. Get Current Timestamp                              |      " << endl;
-    cout << "     |   0. Exit App                                           |      " << endl;
-    cout << "     +=========================================================+      " << endl;
+
+    cout << "     ╔═════════════════════════════════════════════════════════╗      " << endl;
+    cout << "     ║                                                         ║      " << endl;
+    cout << "     ║                          MENU                           ║      " << endl;
+    cout << "     ║                                                         ║      " << endl;
+    cout << "     ║═════════════════════════════════════════════════════════║      " << endl;
+    cout << "     ║                                                         ║      " << endl;
+    cout << "     ║   1. Get System Info                                    ║      " << endl;
+    cout << "     ║   2. Get Memory Status                                  ║      " << endl;
+    cout << "     ║   3. Get Network Status                                 ║      " << endl;
+    cout << "     ║   4. Get Current Timestamp                              ║      " << endl;
+    cout << "     ║   0. Exit App                                           ║      " << endl;
+    cout << "     ║                                                         ║      " << endl;
+    cout << "     ╚═════════════════════════════════════════════════════════╝      " << endl;
     cout << "\n";
     cout << "What you gonna do? \n>";
     string response;
