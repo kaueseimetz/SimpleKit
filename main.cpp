@@ -4,68 +4,80 @@
 #include <cstdlib>
 
 using std::cout;
-using std::endl;
-using std::string;
 using std::cin;
+using std::string;
+using std::endl;
 using std::to_string;
+using std::exit;
 
-int Menu_Interface();
-int SystemInfo_Interface();
-string strip(string& input);
-string addSpace(string& inputText, int maxSpace);
+void Menu();
+void SystemInfo();
+void MemoryStatus();
+void NetworkStatus();
+void CurrentTimestamp();
+
 void clearScreen();
+string strip(string& input);
+string relSpace(string& inputText, int maxSpace);
+
+string response;
 
 int main(){
-    Menu_Interface();
+    Menu();
     return 0;
 }
 
-int Menu_Interface(){
+void Menu(){
     clearScreen();
 
-    cout << "███████╗██╗███╗   ███╗██████╗ ██╗     ███████╗    ██╗  ██╗██╗████████╗" << endl;
-    cout << "██╔════╝██║████╗ ████║██╔══██╗██║     ██╔════╝    ██║ ██╔╝██║╚══██╔══╝" << endl;
-    cout << "███████╗██║██╔████╔██║██████╔╝██║     █████╗      █████╔╝ ██║   ██║   " << endl;
-    cout << "╚════██║██║██║╚██╔╝██║██╔═══╝ ██║     ██╔══╝      ██╔═██╗ ██║   ██║   " << endl;
-    cout << "███████║██║██║ ╚═╝ ██║██║     ███████╗███████╗    ██║  ██╗██║   ██║   " << endl;
-    cout << "╚══════╝╚═╝╚═╝     ╚═╝╚═╝     ╚══════╝╚══════╝    ╚═╝  ╚═╝╚═╝   ╚═╝   " << endl;
+    cout << "███████╗██╗███╗   ███╗██████╗ ██╗     ███████╗     ██╗  ██╗██╗████████╗" << endl;
+    cout << "██╔════╝██║████╗ ████║██╔══██╗██║     ██╔════╝     ██║ ██╔╝██║╚══██╔══╝" << endl;
+    cout << "███████╗██║██╔████╔██║██████╔╝██║     █████╗       █████╔╝ ██║   ██║   " << endl;
+    cout << "╚════██║██║██║╚██╔╝██║██╔═══╝ ██║     ██╔══╝       ██╔═██╗ ██║   ██║   " << endl;
+    cout << "███████║██║██║ ╚═╝ ██║██║     ███████╗███████╗     ██║  ██╗██║   ██║   " << endl;
+    cout << "╚══════╝╚═╝╚═╝     ╚═╝╚═╝     ╚══════╝╚══════╝     ╚═╝  ╚═╝╚═╝   ╚═╝   " << endl;
     
     cout << endl << endl;
 
-    cout << "     ╔═════════════════════════════════════════════════════════╗      " << endl;
-    cout << "     ║                                                         ║      " << endl;
-    cout << "     ║                          MENU                           ║      " << endl;
-    cout << "     ║                                                         ║      " << endl;
-    cout << "     ║═════════════════════════════════════════════════════════║      " << endl;
-    cout << "     ║                                                         ║      " << endl;
-    cout << "     ║   1. Get System Info                                    ║      " << endl;
-    cout << "     ║   2. Get Memory Status                                  ║      " << endl;
-    cout << "     ║   3. Get Network Status                                 ║      " << endl;
-    cout << "     ║   4. Get Current Timestamp                              ║      " << endl;
-    cout << "     ║   0. Exit App                                           ║      " << endl;
-    cout << "     ║                                                         ║      " << endl;
-    cout << "     ╚═════════════════════════════════════════════════════════╝      " << endl;
-    cout << "\n";
-    cout << "What you gonna do? \n>";
-    string response;
-    std::cin >> response;
+    cout << "          ╔═════════════════════════════════════════════════╗          " << endl;
+    cout << "          ║                                                 ║          " << endl;
+    cout << "          ║                      MENU                       ║          " << endl;
+    cout << "          ║                                                 ║          " << endl;
+    cout << "          ║═════════════════════════════════════════════════║          " << endl;
+    cout << "          ║                                                 ║          " << endl;
+    cout << "          ║   1. Get System Info                            ║          " << endl;
+    cout << "          ║   2. Get Memory Status                          ║          " << endl;
+    cout << "          ║   3. Get Network Status                         ║          " << endl;
+    cout << "          ║   4. Get Current Timestamp                      ║          " << endl;
+    cout << "          ║   0. Exit App                                   ║          " << endl;
+    cout << "          ║                                                 ║          " << endl;
+    cout << "          ╚═════════════════════════════════════════════════╝          " << endl;
+    cout << "\nWhat you wanna do?" << endl << ">";
+    cin >> response;
 
+    //Shall have a better way to do this, but i don't know it...
     if (response == "1"){
-        return 1;
+        SystemInfo();
+
     } else if (response == "2"){
-        return 2;
+        MemoryStatus();
+
     } else if (response == "3"){
-        return 3;
+        NetworkStatus();
+
     } else if (response == "4"){
-        return 4;
+        CurrentTimestamp();
+
     } else if (response == "0"){
-        return 0;
+        exit(0);
+
     } else {
-        return -1;
+        Menu();
+    
     }
 }
 
-int SystemInfo_Interface(){
+void SystemInfo(){
     string Info[5];
 
     Info[0] = iware::system::OS_info().full_name + " " + to_string(iware::system::OS_info().major) + "." + to_string(iware::system::OS_info().minor);
@@ -74,20 +86,109 @@ int SystemInfo_Interface(){
     Info[3] = to_string(iware::cpu::quantities().logical);
     Info[4] = to_string(iware::system::memory().physical_total /(1024*1024)) + "MB";
 
+    clearScreen();
 
-    cout << "+=========================================================+" << endl;
-    cout << "|                       System Info                       |" << endl;
-    cout << "+=========================================================+" << endl;
-    cout << "|                                                         |" << endl;
-    cout << "| OS: " << Info[0] << string(addSpace(Info[0], 52)) << "|" << endl;
-    cout << "| Model: " << Info[1] << string(addSpace(Info[1], 49)) << "|" << endl;
-    cout << "| CPU Cores: " << Info[2] << string(addSpace(Info[2], 45)) << "|" << endl;
-    cout << "| CPU Threads: " << Info[3] << string(addSpace(Info[3], 43)) << "|" << endl;
-    cout << "| RAM Width: " << Info[4] << string(addSpace(Info[4], 45)) << "|" << endl;
-    cout << "+=========================================================+" << endl;
+    cout << "      ╔═════════════════════════════════════════════════════════╗      " << endl;
+    cout << "      ║                       System Info                       ║      " << endl;
+    cout << "      ║═════════════════════════════════════════════════════════║      " << endl;
+    cout << "      ║                                                         ║      " << endl;
+    cout << "      ║ OS: " << Info[0] << string(relSpace(Info[0], 52)) << "║      " << endl;
+    cout << "      ║ Model: " << Info[1] << string(relSpace(Info[1], 49)) << "║      " << endl;
+    cout << "      ║ CPU Cores: " << Info[2] << string(relSpace(Info[2], 45)) << "║      " << endl;
+    cout << "      ║ CPU Threads: " << Info[3] << string(relSpace(Info[3], 43)) << "║      " << endl;
+    cout << "      ║ RAM Width: " << Info[4] << string(relSpace(Info[4], 45)) << "║      " << endl;
+    cout << "      ║                                                         ║      " << endl;
+    cout << "      ║ 1. Previous Page                                        ║      " << endl;
+    cout << "      ║ 0. Exit app                                             ║      " << endl;
+    cout << "      ╚═════════════════════════════════════════════════════════╝      " << endl;
+    cout << "\nWhat you wanna do?" << endl << ">";
 
-    return 1;
+    cin >> response;
+
+    if (response == "1"){
+        Menu();
+    }else if (response == "0"){
+        exit(0);
+    }else {
+        SystemInfo();
+    }
 }
+void MemoryStatus(){
+    clearScreen();
+
+
+    cout << "      ╔═════════════════════════════════════════════════════════╗      " << endl;
+    cout << "      ║                      Memory Status                      ║      " << endl;
+    cout << "      ║═════════════════════════════════════════════════════════║      " << endl;
+    cout << "      ║                                                         ║      " << endl;
+    
+    cout << "      ║                                                         ║      " << endl;
+    cout << "      ║ 1. Previous Page                                        ║      " << endl;
+    cout << "      ║ 0. Exit app                                             ║      " << endl;
+    cout << "      ╚═════════════════════════════════════════════════════════╝      " << endl;
+    cout << "\nWhat you wanna do?" << endl << ">";
+
+    cin >> response;
+
+    if (response == "1"){
+        Menu();
+    }else if (response == "0"){
+        exit(0);
+    }else {
+        MemoryStatus();
+    }
+}
+void NetworkStatus(){
+    clearScreen();
+
+    
+    cout << "      ╔═════════════════════════════════════════════════════════╗      " << endl;
+    cout << "      ║                     Network Status                      ║      " << endl;
+    cout << "      ║═════════════════════════════════════════════════════════║      " << endl;
+    cout << "      ║                                                         ║      " << endl;
+    
+    cout << "      ║                                                         ║      " << endl;
+    cout << "      ║ 1. Previous Page                                        ║      " << endl;
+    cout << "      ║ 0. Exit app                                             ║      " << endl;
+    cout << "      ╚═════════════════════════════════════════════════════════╝      " << endl;
+    cout << "\nWhat you wanna do?" << endl << ">";
+
+    cin >> response;
+
+    if (response == "1"){
+        Menu();
+    }else if (response == "0"){
+        exit(0);
+    }else {
+        NetworkStatus();
+    }
+}
+void CurrentTimestamp(){
+    clearScreen();
+
+
+    cout << "      ╔═════════════════════════════════════════════════════════╗      " << endl;
+    cout << "      ║                    Current Timestamp                    ║      " << endl;
+    cout << "      ║═════════════════════════════════════════════════════════║      " << endl;
+    cout << "      ║                                                         ║      " << endl;
+    
+    cout << "      ║                                                         ║      " << endl;
+    cout << "      ║ 1. Previous Page                                        ║      " << endl;
+    cout << "      ║ 0. Exit app                                             ║      " << endl;
+    cout << "      ╚═════════════════════════════════════════════════════════╝      " << endl;
+    cout << "\nWhat you wanna do?" << endl << ">";
+
+    cin >> response;
+
+    if (response == "1"){
+        Menu();
+    }else if (response == "0"){
+        exit(0);
+    }else {
+        CurrentTimestamp();
+    }
+}
+
 string strip(string& input){
     string newString;
     for (int i = 0; i < input.length(); i++) {
@@ -97,7 +198,7 @@ string strip(string& input){
     }
     return newString;
 }
-string addSpace(string& inputText, int maxSpace){
+string relSpace(string& inputText, int maxSpace){
     int space2Fill = maxSpace - inputText.length();
     if (space2Fill > 0) { return string(space2Fill, ' '); }
     return "";
