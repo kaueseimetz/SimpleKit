@@ -115,13 +115,23 @@ void SystemInfo(){
 }
 void MemoryStatus(){
     clearScreen();
-
+    const auto memory = iware::system::memory();
+    string info[4];
+    info[0] = to_string(memory.physical_available / (1024*1024)) + "MB";
+    info[1] = to_string(memory.physical_total / (1024*1024)) + "MB"; 
+    info[2] = to_string(memory.virtual_available / (1024*1024)) + "MB";
+    info[3] = to_string(memory.virtual_total / (1024*1024)) + "MB";
 
     cout << "      ╔═════════════════════════════════════════════════════════╗      " << endl;
     cout << "      ║                      Memory Status                      ║      " << endl;
     cout << "      ║═════════════════════════════════════════════════════════║      " << endl;
     cout << "      ║                                                         ║      " << endl;
-    
+	cout << "      ║    Physical:                                            ║      " << endl;
+	cout << "      ║        Available: " << string(info[0]) << string(relSpace(info[0], 38)) << "║      " << endl;
+	cout << "      ║        Total: " << info[1]  << string(relSpace(info[1], 42)) << "║      " << endl;
+	cout << "      ║    Virtual:                                             ║      " << endl;
+	cout << "      ║        Available: " << info[2]  << string(relSpace(info[2], 38)) << "║      " << endl;
+	cout << "      ║        Total: " << info[3]  << string(relSpace(info[3], 42)) << "║      " << endl;
     cout << "      ║                                                         ║      " << endl;
     cout << "      ║ 1. Previous Page                                        ║      " << endl;
     cout << "      ║ 0. Exit app                                             ║      " << endl;
