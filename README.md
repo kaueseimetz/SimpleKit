@@ -25,3 +25,19 @@ Este é um projeto educativo, apenas para consolidar o conhecimento de C++. Forn
 
 ### Dependências
 Este projeto usa [infoware](https://github.com/ThePhD/infoware), uma biblioteca C++ para acessar informações sobre o sistema e o hardware (por exemplo, detalhes do sistema operacional, informações sobre o uso de memória). infoware está licenciado sob a licença Creative Commons Zero v1.0 Universal (CC0 1.0) Public Domain Dedication, que dedica o trabalho ao domínio público sem restrições de direitos autorais. Consulte [NOTICE](NOTICE) para obter detalhes.
+
+
+## Photos / Fotos
+
+### Menu Display / Painel do Menu
+
+![Menu](pictures/Menu.png)
+
+### System Info Display / Painel sobre o Sistema
+
+![System Info](pictures/SystemInfo.png)
+
+### Memory Status Display (RAM) / Painel Sobre Memória (RAM)
+
+![Memory Status](pictures/MemoryStatus.png)
+
