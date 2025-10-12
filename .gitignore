@@ -1,6 +1,6 @@
 *
-!/pictures
-!/libs
+!pictures/**
+!libs/**
 !.gitignore
 !main.cpp
 !NOTICE
