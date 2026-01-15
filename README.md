@@ -6,7 +6,7 @@ This is a educational project, just to consolidate C++ knowledge. Providing basi
 |       Functions       |           Descriptions           |
 | --------------------- | -------------------------------- |
 | Get System Info       | OS name, version, or CPU type    | 
-| Get Memory Status     | hysical RAM or heap size         | 
+| Get Memory Status     | physical RAM or heap size        | 
 | Get Network Status    | network-related details          |
 | Get Current Timestamp | current date, time, and timezone |
 
